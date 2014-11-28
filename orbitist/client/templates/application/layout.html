@@ -1,7 +1,4 @@
-<head>
-  <title>Orbitist</title>
-</head>
-<body>
+<template name="layout">
   <div class="container">
     <header class="navbar navbar-default" role="navigation"> 
       <div class="navbar-header">
@@ -9,7 +6,7 @@
       </div>
     </header>
     <div id="main" class="row-fluid">
-      {{> mapsList}}
+      {{> yield}}
     </div>
   </div>
-</body>
+</template>
