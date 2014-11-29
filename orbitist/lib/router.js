@@ -5,3 +5,7 @@ Router.configure({
 });
 
 Router.route('/', {name: 'mapsList'});
+Router.route('/maps/:_id', {
+  name: 'mapPage',
+  data: function() { return Maps.findOne(this.params._id); }
+});
