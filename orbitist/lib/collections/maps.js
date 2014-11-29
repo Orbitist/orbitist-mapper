@@ -1,5 +1,10 @@
 Maps = new Mongo.Collection('maps');
 
+Maps.allow({
+  update: function(userId, map) { return ownsDocument(userId, map); },
+  remove: function(userId, map) { return ownsDocument(userId, map); },
+});
+
 Meteor.methods({
   mapInsert: function(mapAttributes) {
     check(Meteor.userId(), String);
