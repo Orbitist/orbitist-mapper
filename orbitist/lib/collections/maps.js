@@ -12,6 +12,13 @@ Maps.deny({
   }
 });
 
+Maps.deny({
+  update: function(userId, map, fieldNames, modifier) {
+    var errors = validatePost(modifier.$set);
+    return errors.title;
+  }
+});
+
 validateMap = function (map) {
   var errors = {};
   if (!map.title)

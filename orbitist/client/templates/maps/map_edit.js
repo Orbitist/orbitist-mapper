@@ -1,3 +1,15 @@
+Template.mapEdit.created = function() {
+  Session.set('mapEditErrors', {});
+}
+Template.mapEdit.helpers({
+  errorMessage: function(field) {
+    return Session.get('mapEditErrors')[field];
+  },
+  errorClass: function (field) {
+    return !!Session.get('mapEditErrors')[field] ? 'has-error' : '';
+  }
+});
+
 Template.mapEdit.events({
   'submit form': function(e) {
     e.preventDefault();
@@ -7,6 +19,10 @@ Template.mapEdit.events({
     var mapProperties = {
       title: $(e.target).find('[name=title]').val()
     }
+    
+    var errors = validateMap(mapProperties);
+    if (errors.title)
+      return Session.set('mapEditErrors', errors);
 
     Maps.update(currentMapId, {$set: mapProperties}, function(error) {
       if (error) {
