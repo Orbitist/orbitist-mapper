@@ -12,6 +12,11 @@ Router.route('/maps/:_id', {
   data: function() { return Maps.findOne(this.params._id); }
 });
 
+Router.route('/maps/:_id/edit', {
+  name: 'mapEdit',
+  data: function() { return Maps.findOne(this.params._id); }
+});
+
 Router.route('/create', {name: 'mapCreate'});
 
 var requireLogin = function() {
