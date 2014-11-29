@@ -12,12 +12,24 @@ Maps.deny({
   }
 });
 
+validateMap = function (map) {
+  var errors = {};
+  if (!map.title)
+    errors.title = "Please give your map a title.";
+  return errors;
+}
+
 Meteor.methods({
   mapInsert: function(mapAttributes) {
     check(Meteor.userId(), String);
     check(mapAttributes, {
       title: String
     });
+    
+    var errors = validateMap(mapAttributes);
+    if (errors.title)
+      throw new Meteor.Error('invalid-map', "You must set a title for your map");
+    
     var user = Meteor.user();
     var map = _.extend(mapAttributes, {
       userId: user._id, 
