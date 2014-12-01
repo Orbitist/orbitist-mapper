@@ -1,13 +1,51 @@
+// Fixture data
 if (Maps.find().count() === 0) {
-  Maps.insert({
-    title: 'African Lions'
+  var now = new Date().getTime();
+
+  // create two users
+  var tomId = Meteor.users.insert({
+    profile: { name: 'Tom Coleman' }
+  });
+  var tom = Meteor.users.findOne(tomId);
+  var sachaId = Meteor.users.insert({
+    profile: { name: 'Sacha Greif' }
+  });
+  var sacha = Meteor.users.findOne(sachaId);
+
+  var telescopeId = Maps.insert({
+    title: 'Introducing Telescope',
+    userId: sacha._id,
+    author: sacha.profile.name,
+    submitted: new Date(now - 7 * 3600 * 1000)
+  });
+
+  Stories.insert({
+    mapId: telescopeId,
+    userId: tom._id,
+    author: tom.profile.name,
+    submitted: new Date(now - 5 * 3600 * 1000),
+    body: 'Interesting project Sacha, can I get involved?'
+  });
+
+  Stories.insert({
+    postId: telescopeId,
+    userId: sacha._id,
+    author: sacha.profile.name,
+    submitted: new Date(now - 3 * 3600 * 1000),
+    body: 'You sure can Tom!'
   });
 
   Maps.insert({
-    title: 'Plastics in the Great Lakes'
+    title: 'Meteor',
+    userId: tom._id,
+    author: tom.profile.name,
+    submitted: new Date(now - 10 * 3600 * 1000)
   });
 
   Maps.insert({
-    title: 'Culture in Peru'
+    title: 'The Meteor Book',
+    userId: tom._id,
+    author: tom.profile.name,
+    submitted: new Date(now - 12 * 3600 * 1000)
   });
 }

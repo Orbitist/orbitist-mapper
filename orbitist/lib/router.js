@@ -2,7 +2,9 @@ Router.configure({
   layoutTemplate: 'layout',
   loadingTemplate: 'loading',
   notFoundTemplate: 'notFound',
-  waitOn: function() { return Meteor.subscribe('maps'); }
+  waitOn: function() {
+    return [Meteor.subscribe('maps'), Meteor.subscribe('stories')];
+  }
 });
 
 Router.route('/', {name: 'mapsList'});
