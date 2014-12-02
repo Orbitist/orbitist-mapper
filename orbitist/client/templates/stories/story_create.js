@@ -18,7 +18,7 @@ Template.storyCreate.events({
     var $body = $(e.target).find('[name=body]');
     var story = {
       body: $body.val(),
-      postId: template.data._id
+      mapId: template.data._id
     };
 
     var errors = {};
