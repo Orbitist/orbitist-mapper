@@ -4,9 +4,8 @@
     		<div class="post-content">
       			<h3>{{title}}</h3>
       			<p>
-        			submitted by {{author}}
-        			{{storiesCount}} stories
-        			{{#if ownMap}}<a href="{{pathFor 'mapEdit'}}">Edit</a>{{/if}}
+        			by {{author}}
+        			{{#if ownMap}}<small><a href="{{pathFor 'mapEdit'}}">Edit</a></small>{{/if}}
       			</p>
     		</div><!-- post-content -->
   		</div><!-- post -->
