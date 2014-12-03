@@ -31,7 +31,7 @@ Template.storyCreate.events({
       if (error){
         throwError(error.reason);
       } else {
-        $body.val('');
+        Router.go('mapPage', {_id: template.data._id});
       }
     });
   }
