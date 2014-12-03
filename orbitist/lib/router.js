@@ -22,6 +22,11 @@ Router.route('/maps/:_id/edit', {
   data: function() { return Maps.findOne(this.params._id); }
 });
 
+Router.route('/maps/:_id/add', {
+  name: 'storyCreate',
+  data: function() { return Maps.findOne(this.params._id); }
+});
+
 Router.route('/create', {name: 'mapCreate'});
 
 var requireLogin = function() {

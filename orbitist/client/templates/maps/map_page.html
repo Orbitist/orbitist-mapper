@@ -6,7 +6,7 @@
     {{/each}}
   </ul>
   {{#if currentUser}}
-    {{> storyCreate}}
+    <button class="btn btn-default"><a href="{{pathFor 'storyCreate'}}">Tell a story about {{title}}</a></button>
   {{else}}
     <p>Please log in to create a story.</p>
   {{/if}}
